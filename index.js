@@ -245,7 +245,21 @@ CoolLink.prototype.setRotation = function(value, callback) {
 function HotCoolLink(log, config) {
     CoolLink.call(this, log, config);
 }
+
 HotCoolLink.prototype = Object.create(CoolLink.prototype);
+
+HotCoolLink.prototype.getServices = function() {
+    return [
+        this.heater_cooler,
+        this.temperature_sensor,
+        this.humidity_sensor,
+        this.air_quality_sensor,
+        this.fan,
+        this.auto_switch,
+        this.rotation_switch,
+    ];
+}
+
 HotCoolLink.prototype.getHeaterCoolerState = function(value, callback) {
     var that = this;
     this.json_emitter.once('state', (json) => {
@@ -292,14 +306,17 @@ HotCoolLink.prototype.isSwing = function(callback) {
 }
 
 HotCoolLink.prototype.initCommonSensors = function() {
-    // this.heater_cooler = new Service.HeaterCooler(this.name);
+    this.log("HotCoolLink initCommonSensors");
+    this.heater_cooler = new Service.HeaterCooler(this.name);
     // this.heater_cooler
     //     .getCharacteristic(Characteristic.Active)
     //     .on('get', this.isFanOn.bind(this))
     //     .on('set', this.setFan.bind(this));
 
-    // this.heater_cooler
-    //     .getCharacteristic(Characteristic.getHeaterCoolerState)
+    this.heater_cooler
+        .getCharacteristic(Characteristic.CurrentHeaterCoolerState)
+        .on('get', this.getHeaterCoolerState.bind(this))
+        .on('set', this.setHeaterCoolerState.bind(this));
 
     // Temperature sensor
     this.temperature_sensor = new Service.TemperatureSensor(this.name);
