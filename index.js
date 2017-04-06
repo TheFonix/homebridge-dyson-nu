@@ -249,6 +249,7 @@ function HotCoolLink(log, config) {
 HotCoolLink.prototype = Object.create(CoolLink.prototype);
 
 HotCoolLink.prototype.getServices = function() {
+    this.log("HotCoolLink .getServices")
     return [
         this.heater_cooler,
         this.temperature_sensor,
@@ -261,6 +262,7 @@ HotCoolLink.prototype.getServices = function() {
 }
 
 HotCoolLink.prototype.getHeaterCoolerState = function(value, callback) {
+    this.log("HotCoolLink .getHeaterCoolerState")
     var that = this;
     this.json_emitter.once('state', (json) => {
         var fmod = json['product-state']['fmod'];
@@ -283,6 +285,7 @@ HotCoolLink.prototype.getHeaterCoolerState = function(value, callback) {
 }
 
 HotCoolLink.prototype.setHeaterCoolerState = function(value, callback) {
+    this.log("HotCoolLink .setHeaterCoolerState")
     var that = this;
     var now = new Date();
     var hmod = value === Characteristic.CurrentHeaterCoolerState.HEATING ? "HEAT" : "OFF";
