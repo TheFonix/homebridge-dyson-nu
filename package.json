@@ -1,6 +1,6 @@
 {
   "name": "homebridge-dyson",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "HomeBridge interface to Dyson Link smart purifiers",
   "main": "index.js",
   "dependencies": {

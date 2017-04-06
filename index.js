@@ -50,6 +50,7 @@ CoolLink.prototype.initConnection = function() {
     });
 }
 CoolLink.prototype.initCommonSensors = function() {
+    this.log("CoolLink initCommonSensors");
     // Temperature sensor
     this.temperature_sensor = new Service.TemperatureSensor(this.name);
     this.temperature_sensor
