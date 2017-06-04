@@ -91,8 +91,6 @@ CoolLink.prototype.initSpecificSensors = function() {
 CoolLink.prototype.getServices = function() {
     return [
         this.temperature_sensor,
-        this.humidity_sensor,
-        this.air_quality_sensor,
         this.fan,
         this.auto_switch,
         this.rotation_switch,
@@ -211,9 +209,4 @@ CoolLink.prototype.setRotation = function(value, callback) {
         message
     );
     this.isRotationOn(callback);
-}
-
-
-function HotCoolLink(log, config) {
-    CoolLink.call(this, log, config);
 }
