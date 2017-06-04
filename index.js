@@ -5,7 +5,6 @@ module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
     homebridge.registerAccessory("homebridge-dyson", "dyson-coollink", CoolLink);
-    homebridge.registerAccessory("homebridge-dyson", "dyson-hotcoollink", HotCoolLink);
 }
 function CoolLink(log, config) {
     this.log = log;
