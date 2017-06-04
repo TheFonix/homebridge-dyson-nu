@@ -110,7 +110,7 @@ CoolLink.prototype.getServices = function() {
     ];
 }
 CoolLink.prototype.getMQTTPrefix = function() {
-    return "475";
+    return "469";
 }
 CoolLink.prototype.getCurrentStatusTopic = function() {
     return this.getMQTTPrefix() + '/' + this.username + '/status/current';
