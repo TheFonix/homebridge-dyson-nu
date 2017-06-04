@@ -57,17 +57,6 @@ CoolLink.prototype.initCommonSensors = function() {
         .getCharacteristic(Characteristic.CurrentTemperature)
         .setProps({minValue: -50, maxValue: 100})
         .on('get', this.getTemperature.bind(this));
-    // Humidity sensor
-    this.humidity_sensor = new Service.HumiditySensor(this.name);
-    this.humidity_sensor
-        .getCharacteristic(Characteristic.CurrentRelativeHumidity)
-        .setProps({minValue: 0, maxValue: 100})
-        .on('get', this.getRelativeHumidity.bind(this));
-    // Air Quality sensor
-    this.air_quality_sensor = new Service.AirQualitySensor(this.name);
-    this.air_quality_sensor
-        .getCharacteristic(Characteristic.AirQuality)
-        .on('get', this.getAirQuality.bind(this));
     // Fan
     this.fan = new Service.Fan(this.name);
     this.fan
