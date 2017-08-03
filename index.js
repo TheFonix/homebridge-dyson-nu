@@ -169,7 +169,7 @@ CoolLink.prototype.isAutoOn = function(callback) {
     this.json_emitter.once('state', (json) => {
         var nmod = json['product-state']['nmod'];
         var on = (nmod === "ON")
-        that.log("Auto:", on);
+        that.log("NightMode:", on);
         callback(null, on);
     });
     this.requestCurrentState();
