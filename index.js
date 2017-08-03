@@ -78,7 +78,7 @@ CoolLink.prototype.initCommonSensors = function() {
 }
 CoolLink.prototype.initSpecificSensors = function() {
     // Auto switch
-    this.auto_switch = new Service.Switch("Auto - " + this.name, "Auto");
+    this.auto_switch = new Service.Switch("Night - " + this.name, "Night");
     this.auto_switch
         .getCharacteristic(Characteristic.On)
         .on('get', this.isAutoOn.bind(this))
