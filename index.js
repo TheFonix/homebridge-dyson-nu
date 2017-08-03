@@ -77,7 +77,7 @@ CoolLink.prototype.initCommonSensors = function() {
         .on('set', this.setRotation.bind(this));
 }
 CoolLink.prototype.initSpecificSensors = function() {
-    // Auto switch
+    // Night Mode
     this.auto_switch = new Service.Switch("Night - " + this.name, "Night");
     this.auto_switch
         .getCharacteristic(Characteristic.On)
