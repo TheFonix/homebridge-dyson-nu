@@ -167,8 +167,8 @@ CoolLink.prototype.setFanRotationSpeed = function(value, callback) {
 CoolLink.prototype.isAutoOn = function(callback) {
     var that = this;
     this.json_emitter.once('state', (json) => {
-        var fmod = json['product-state']['fmod'];
-        var on = (fmod === "AUTO")
+        var nmod = json['product-state']['nmod'];
+        var on = (nmod === "ON")
         that.log("Auto:", on);
         callback(null, on);
     });
@@ -177,8 +177,8 @@ CoolLink.prototype.isAutoOn = function(callback) {
 CoolLink.prototype.setAuto = function(value, callback) {
     var that = this;
     var now = new Date();
-    var fmod = value ? "AUTO" : "OFF";
-    var message = '{"msg":"STATE-SET","time":"' + now.toISOString() + '","data":{"fmod":"' + fmod + '"}}';
+    var nmod = value ? "ON" : "OFF";
+    var message = '{"msg":"STATE-SET","time":"' + now.toISOString() + '","data":{"nmod":"' + nmod + '"}}';
     this.mqtt_client.publish(
         this.getCommandTopic(),
         message
